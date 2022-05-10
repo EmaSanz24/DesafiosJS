@@ -1,98 +1,119 @@
-
-let operacion = "1"
-while(operacion!="FIN")
-{//eleguir operacion
-    operacion = prompt(`ingresa una operacion:
-                         CONTAR
-                         SUMAR
-                         RESTAR
-                         MULTIPLICAR
-                         DIVIDIR
-                         FIN`);
-    operacion = operacion.toUpperCase();
-
-    if(operacion === "CONTAR")//Contar
+//calcular pagos en cuotas sobre un monto determinado
+/*  1.pedir al usuario el monto que desea
+    2.pedir al usuario la cantidad de cuotas que desea
+    3.calcular las cuotas con su correspondiente interes
+    4.mostrar al usuario en un alert el resultado */
+let rpt= "SI"
+while(rpt!="NO")
+{
+    let cantidadPrestamo = elegirPrestamo()
+    let cantidadCuotas = elegirCuotas()
+    let precioCuotas = calculo()
+    alert("Las cuotas que debe abonar son de: $" + precioCuotas)
+    let consulta = "H"
+    while(consulta != "SI" && consulta != "NO")
     {
-        let conteo = Number(prompt("Conteo: Ingrese el numero hasta el cual quiera contar"));
-
-        if(isNaN(conteo))
+        consulta=prompt("Desea volver a calcular un prestamo? SI/NO")
+        consulta = consulta.toUpperCase();
+        if(consulta != "SI" && consulta != "NO")
         {
-        alert("Debe ingresar un numero valido");
+            alert("Por favor seleccione una opcion valida SI/NO")
         }
-        else
+        else if(consulta === "NO")
+        {   
+            alert("Muchas gracias por usar nuestra calculadora")
+        }
+    }
+    rpt = consulta
+    
+    
+    function elegirPrestamo()
+    {
+        let repeat = true
+        while(repeat = true)
         {
-            for(let i=1;i<=conteo;i++)
+            const opcion = Number(prompt(`Bienvenido/a a la calculadora de prestamos, por favor ingrese el dinero que desea pedir`))
+            if(isNaN(opcion))
             {
-                console.log(i);
+                alert("Por Favor ingrese un numero valido")
             }
-        } 
+            else if(opcion < 0)
+            {
+                alert("El numero no puede ser menor a cero")
+            }
+            else
+            {
+                repeat=false
+                return opcion
+            }
+        }
+        
     }
-    else if(operacion === "SUMAR")//Sumar
+    function elegirCuotas()
     {
-        let numero1 = Number(prompt("Ingrese el valor de a ==>'a+b'"))
-        let numero2 = Number(prompt("Ingrese el valor de b ==>'a+b'"))
-
-        if(isNaN(numero1)|| isNaN(numero2))
+        let repeat = true
+        while(repeat = true)
         {
-            alert("Alguno de sus numeros no es valido")
+            const opcion2 = Number(prompt(`Por favor ingrese el numero de la opcion que desea:
+            1. 3 cuotas
+            2. 6 cuotas
+            3. 12 cuotas
+            4. 24 cuotas
+            5. 36 cuotas`))
+    
+            if(isNaN(opcion2) || opcion2 > 5)
+            {
+                alert("Por Favor ingrese un numero valido")
+            }
+            else
+            {
+                repeat=false
+                return opcion2
+            }
+        }
+        
+    }
+    
+    function calculo()
+    {
+        let repeat = true
+        while(repeat=true)
+        if(cantidadCuotas === 1)//2%
+        {
+            let interes = cantidadPrestamo*1.02
+            let cuotas = interes/3
+            repeat=false
+            return cuotas
+        }
+        else if(cantidadCuotas === 2)//5%
+        {
+            let interes = cantidadPrestamo*1.05
+            let cuotas = interes/6
+            repeat=false
+            return cuotas
+        }
+        else if(cantidadCuotas === 3)//10%
+        {
+            let interes = cantidadPrestamo*1.10
+            let cuotas = interes/12
+            repeat=false
+            return cuotas
+        }
+        else if(cantidadCuotas === 4)//20%
+        {
+            let interes = cantidadPrestamo*1.20
+            let cuotas = interes/24
+            repeat=false
+            return cuotas
+        }
+        else if(cantidadCuotas === 5)//35%
+        {
+            let interes = cantidadPrestamo*1.35
+            let cuotas = interes/36
+            repeat=false
+            return cuotas
         }
         else
-        {
-            alert(numero1+numero2);
-        }
+        alert("La opcion ingresada es invalida")
     }
-    else if(operacion === "RESTAR")//Restar
-    {
-        let numero1 = Number(prompt("Ingrese el valor de a ==>'a-b'"))
-        let numero2 = Number(prompt("Ingrese el valor de b ==>'a-b'"))
-
-        if(isNaN(numero1)|| isNaN(numero2))
-        {
-            alert("Alguno de sus numeros no es valido")
-        }
-        else
-        {
-            alert(numero1-numero2);
-        }
-    }
-    else if(operacion === "MULTIPLICAR")//Multiplicar
-    {
-        let numero1 = Number(prompt("Ingrese el valor de a ==>'a*b'"))
-        let numero2 = Number(prompt("Ingrese el valor de b ==>'a*b'"))
-
-        if(isNaN(numero1) || isNaN(numero2))
-        {
-            alert("Alguno de sus numeros no es valido")
-        }
-        else
-        {
-            alert(numero1*numero2);
-        }
-    }
-    else if(operacion === "DIVIDIR")//Dividir
-    {
-        let numero1 = Number(prompt("Ingrese el valor de a ==>'a/b'"))
-        let numero2 = Number(prompt("Ingrese el valor de b ==>'a/b'"))
-
-        if(isNaN(numero1) || isNaN(numero2))
-        {
-            alert("Alguno de sus numeros no es valido")
-        }
-        else if(numero2 ==0)
-        {
-            alert("Numero 2 no es valido para divdir")
-        }
-        else
-        {
-            alert(numero1/numero2); 
-        }
-    }
-    else if(operacion === "FIN")
-    {
-        alert("Fin, Gracias por usar nuestra calculadora")
-    }
-    else //opciones invalidas
-    {
-        alert("opcion invalida")
-    }
-}   
+}
