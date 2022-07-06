@@ -326,9 +326,15 @@ function pedirPrestamo()
     //prestamo > id,monto,cuotas,idSolicitante
     let prestamo = new Prestamo(id, monto, cuotas, idSolicitante)
 
-    console.log(prestamo)
     prestamos.push(prestamo)
-    localStorage.setItem("prestamos", JSON.stringify(usuarios))
+    localStorage.setItem("prestamos", JSON.stringify(usuarios)
+    )
+    swal({
+        tittle:"Prestamo tomado con éxito ",
+        text:'Siempre que desees puedes revisar los datos de tu prestamo en la pestaña "Listar Prestamos Realizados" muchas gracias por tu confianza',
+        icon:"success",
+        button:"Continuar"
+    })
     }
 
 }       
