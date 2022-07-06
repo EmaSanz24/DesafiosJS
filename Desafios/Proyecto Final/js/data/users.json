@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "nombre": "Admin",
+        "apellido": "Admin"
+    },
+    {
+        "id": 2,
+        "nombre": "Raul",
+        "apellido": "Gonzalez"
+    },
+    {
+        "id": 3,
+        "nombre": "Matias",
+        "apellido": "Gecke"
+    },
+    {
+        "id": 4,
+        "nombre": "Christian",
+        "apellido": "Belessi"
+    },
+    {
+        "id": 5,
+        "nombre": "Juan Cruz",
+        "apellido": "Luzuruaga"
+    },
+    {
+        "id": 6,
+        "nombre": "Guido",
+        "apellido": "Pela"
+    },
+    {
+        "id": 7,
+        "nombre": "Gerardo",
+        "apellido": "Malpuzi"
+    }
+]
